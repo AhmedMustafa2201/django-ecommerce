@@ -16,7 +16,7 @@ def products(request):
 
 def product_details(request, id):
     product = get_object_or_404(Product, pk=id)
-    similar_products = Product.objects.all().exclude(pk=id)
+    similar_products = Product.objects.all().exclude(pk=id)[:2]
     return render(request, 'website/product_details.html', { "product": product, "similar_products": similar_products })
 
 def register(request):
