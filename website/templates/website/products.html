@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+<section class="sec_include">
+    <h1 style="text-align: center; padding-top: 5rem;" class="adj_text">Products List</h1>
+    <div class="container">
+      <div class="row">
+        {% for product in products %}
+        <div style="margin-top: 2rem;" class="col-xs-12 col-sm-4 col-md-4 adj_text">
+
+
+          <img src="{{product.Image}}" style="max-height: 11em;" alt="{{product.Name}}" />
+          <h3>{{product.Name}}</h3>
+          <p>{{ product.Description | slice:40}}...</p>
+          
+          <div class="read-more-btn-custom">
+            <a href="{% url 'details' product.id %}" class="btn-oval">Learn More</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block content %}
+
+<section class="sec_include">
+    <div class="container">
+
+
+      <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-12 adj_text">
+          <h3 style="margin-bottom: 3rem;">
+            {{product.Name}}
+          </h3>
+          <img src="{{product.Image}}" height="400px" alt="{{product.Name}}" />
+          <h4>
+            {{product.Description}}
+          </h4>
+          <!-- <p><strong>There's </strong>
+            <%=product?.stock%> pieces into our stock.
+          </p> -->
+          <!-- <p><strong>Price <span style="text-decoration-line: line-through;">
+                <%=product?.price%>$</span></strong>
+             <span><%=product?.price - (product?.price / product?.discountPercentage).toFixed(0)%>$ with discount
+              <%=product?.discountPercentage%>%</span>
+          </p> -->
+        </div>
+
+      </div>
+    </div>
+
+    <h1 style="text-align: center; padding-top: 5rem;" class="adj_text">Similar Products</h1>
+    <div class="container">
+      
+      <div class="row">
+        {% for product in similar_products %}
+        <div style="margin-top: 2rem;" class="col-xs-12 col-sm-4 col-md-6 adj_text">
+          <img src="{{product.Image}}" style="max-height: 21em;" alt="{{product.Name}}" />
+          <h3>{{product.Name}}</h3>
+          <p>{{product.Description | slice:40}}...</p>
+          
+          <div class="read-more-btn-custom">
+            <a href="{% url 'details' product.id %}" class="btn-oval">Learn More</a>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
