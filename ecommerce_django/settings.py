@@ -136,9 +136,9 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# STATICFILES_DIR = [
-#     os.path.join(BASE_DIR, 'ecommerce_django/static/website')
-# ]
+STATICFILES_DIR = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 
 # Default primary key field type
